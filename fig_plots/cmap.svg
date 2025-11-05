@@ -7,7 +7,7 @@
    viewBox="0 0 88.000003 70.999998"
    version="1.1"
    id="svg5"
-   inkscape:version="1.4.1 (1:1.4.1+202503302257+93de688d07)"
+   inkscape:version="1.4.2 (1:1.4.2+202505120737+ebf0e940d0)"
    sodipodi:docname="cmap.svg"
    xml:space="preserve"
    inkscape:export-filename="electrode.pdf"
@@ -36,7 +36,7 @@
      inkscape:window-x="66"
      inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g201"
+     inkscape:current-layer="layer1"
      inkscape:pageshadow="2"
      units="mm"
      height="88mm"
@@ -1478,8 +1478,7 @@
          id="rect128" /></clipPath></defs><g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="raster"
-     sodipodi:insensitive="true"><image
+     inkscape:label="raster"><image
        width="49.377598"
        height="53.746399"
        preserveAspectRatio="none"
@@ -1489,8 +1488,7 @@
        y="5.8137774" /></g><g
      inkscape:label="base"
      inkscape:groupmode="layer"
-     id="layer1"
-     sodipodi:insensitive="true"><g
+     id="layer1"><g
        id="figure_1"
        transform="matrix(0.35277778,0,0,0.35277778,-0.41270736,-2.0178893)"><g
          id="patch_1"><path

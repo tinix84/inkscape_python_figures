@@ -4,9 +4,9 @@ Example for a Matplotlib plot with the following features:
     - Colorbar
 
 The vector scatter plot would create unreasonably large file.
-Therefore, the plot is divided into two parts:
-    - A vector plot with the axes, labels, ticks, legend, etc.
-    - A raster plot with the scatter plot dots (payload).
+Therefore, the plot is divided into two parts.
+A vector plot with the axes, labels, ticks, legend, etc.
+A raster plot with the scatter plot dots (payload).
 """
 
 __author__ = "Thomas Guillod"

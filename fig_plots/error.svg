@@ -7,7 +7,7 @@
    viewBox="0 0 88.000003 70.999998"
    version="1.1"
    id="svg5"
-   inkscape:version="1.4.1 (1:1.4.1+202503302257+93de688d07)"
+   inkscape:version="1.4.2 (1:1.4.2+202505120737+ebf0e940d0)"
    sodipodi:docname="error.svg"
    xml:space="preserve"
    inkscape:export-filename="electrode.pdf"
@@ -29,7 +29,7 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="2.8284274"
-     inkscape:cx="199.40409"
+     inkscape:cx="199.22732"
      inkscape:cy="175.53924"
      inkscape:window-width="2494"
      inkscape:window-height="1371"
@@ -1557,8 +1557,7 @@
          id="path135-5" /></marker></defs><g
      inkscape:label="base"
      inkscape:groupmode="layer"
-     id="layer1"
-     sodipodi:insensitive="true"><g
+     id="layer1"><g
        id="PathCollection_1"
        transform="matrix(0.35277778,0,0,0.35277778,-0.39447289,-0.95955579)"><defs
          id="defs2-1"><path
@@ -2370,10 +2369,10 @@
                x="97.90242"
                y="-29.902626"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.4677px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.360422;stroke-dasharray:none">bad data</tspan></text></g></g></g><path
-       style="fill:#000000;stroke:#000000;stroke-width:0.329999;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#Triangle);marker-start:url(#marker43)"
+       style="fill:#000000;stroke:#000000;stroke-width:0.329999;stroke-linecap:round;stroke-linejoin:round;marker-start:url(#marker43);marker-end:url(#Triangle)"
        d="M 21.497393,43.685965 H 41.667736"
        id="path42" /><path
        style="display:inline;fill:#000000;stroke:#000000;stroke-width:0.329999;stroke-linecap:round;stroke-linejoin:round;marker-start:url(#marker43-3);marker-end:url(#Triangle-7)"
-       d="m 61.83171,43.685964 20.232355,0"
+       d="M 61.83171,43.685964 H 82.064065"
        id="path42-5"
        sodipodi:nodetypes="cc" /></g></svg>

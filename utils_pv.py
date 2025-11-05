@@ -22,6 +22,18 @@ def set_global():
 
 
 def get_crop(filename, margin=0):
+    """
+    Function for removing the transparent border from images.
+    The original file is overwritten.
+
+    Parameters
+    ----------
+    filename : str
+        Path of the filename to be cropped.
+    margin : int
+        Margin (in pixels) for the cropping.
+    """
+
     # open the image
     input_img = img.open(filename)
 
