@@ -7,6 +7,7 @@ A **tutorial** for creating **publication-quality figures** with **open-source t
 * **Schematics / diagrams** with Inkscape
 * **Various plots** with Matplotlib
 * **Mesh/FEM plots** with PyVista
+* [**Slides of the tutorial**](slides.pdf)
 
 The following open-source tools are used:
 * **Inkscape** for creating and assembling figures
