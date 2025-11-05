@@ -40,7 +40,8 @@ The following open-source tools are used:
 * Folders
   * [fig_schemas](fig_schemas) - Examples of Inkscape schematics / diagrams.
   * [fig_plots](fig_plots) - Examples of Inkscape plots (with Python).
-  * [mesh_data](mesh_data) - EM simulation results for the examples.
+  * [plot_data](plot_data) - Data for the example plots.
+  * [img_data](img_data) - Images for the readme file.
 
 ## Compatibility
 
