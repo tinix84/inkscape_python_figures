@@ -1,6 +1,6 @@
 """
 Collection of small utils to create figures with Matplotlib:
-    - Step nice default parameters (fonts, sizes, etc.).
+    - Setup nice default parameters (fonts, sizes, etc.).
     - Create and save figures as PDFs and PNGs.
     - Set the grid, axis limit, and axis ticks.
     - Clone the exact size of an axes in a new figure.
@@ -26,7 +26,6 @@ def set_global():
     plt.rcParams["mathtext.default"] = "regular"
 
     # set the axes parameters
-    plt.rcParams["axes.grid"] = True
     plt.rcParams["axes.linewidth"] = 1.0
     plt.rcParams["axes.labelsize"] = 9.0
     plt.rcParams["axes.titlesize"] = 10.0
@@ -44,6 +43,13 @@ def set_global():
 def set_grid(major=True, minor=True):
     """
     Set the grid for a plot.
+
+    Parameters
+    ----------
+    major : bool
+        Use the major grid.
+    minor : bool
+        Use the minor grid.
     """
 
     if major:
@@ -58,6 +64,22 @@ def get_bnd(bnd=None, add_offset=0.0, add_fact=0.0):
         - bnd: vector containing the bounds
         - add_offset: offset added to the bounds (useful for linear scales)
         - add_fact: factor added to the bounds (useful for log scales)
+
+    Parameters
+    ----------
+    bnd : array
+        Array with the min and max values.
+    add_offset : float
+        Add additive offset for the limits (for linear scales).
+    add_fact : float
+        Add multiplicative offset for the limits (for log scales).
+
+    Returns
+    -------
+    v_min : float
+        Lower limit for the axis.
+    v_max : float
+        Upper limit for the axis.
     """
 
     # set the bounds
@@ -70,6 +92,15 @@ def get_bnd(bnd=None, add_offset=0.0, add_fact=0.0):
 def set_cbar(bnd=None, add_offset=0.0, add_fact=0.0):
     """
     Create a colorbar and set the bounds (with tolerances).
+
+    Parameters
+    ----------
+    bnd : array
+        Array with the min and max values.
+    add_offset : float
+        Add additive offset for the limits (for linear scales).
+    add_fact : float
+        Add multiplicative offset for the limits (for log scales).
     """
 
     # create the colorbar
@@ -86,6 +117,15 @@ def set_cbar(bnd=None, add_offset=0.0, add_fact=0.0):
 def set_x_axis(bnd=None, add_offset=0.0, add_fact=0.0):
     """
     Set the bounds for the x-axis (with tolerances).
+
+    Parameters
+    ----------
+    bnd : array
+        Array with the min and max values.
+    add_offset : float
+        Add additive offset for the limits (for linear scales).
+    add_fact : float
+        Add multiplicative offset for the limits (for log scales).
     """
 
     if bnd is not None:
@@ -96,6 +136,15 @@ def set_x_axis(bnd=None, add_offset=0.0, add_fact=0.0):
 def set_y_axis(bnd=None, add_offset=0.0, add_fact=0.0):
     """
     Set the bounds for the y-axis (with tolerances).
+
+    Parameters
+    ----------
+    bnd : array
+        Array with the min and max values.
+    add_offset : float
+        Add additive offset for the limits (for linear scales).
+    add_fact : float
+        Add multiplicative offset for the limits (for log scales).
     """
 
     if bnd is not None:
@@ -109,6 +158,15 @@ def set_format(axis, ticks=None, fmt=None):
         - A Matplotlib formatter can be provided.
         - If a string is provided, StrMethodFormatter is used.
         - If a calltable is provided, FuncFormatter is used.
+
+    Parameters
+    ----------
+    axis : axis
+        Axis to be considered.
+    ticks : array
+        Position of the ticks.
+    fmt : format
+        Tick formatter (Formatter object, string, or function handle).
     """
 
     # set the ticks
@@ -129,9 +187,21 @@ def set_format(axis, ticks=None, fmt=None):
 
 def get_fig(size=(6, 4), dpi=100):
     """
-    Create a figure for a vector plot:
-        - The figure size can be specified (print size).
-        - The resolution can be specified (screen size)
+    Create a figure for a vector plot.
+
+    Parameters
+    ----------
+    size : tuple
+        Size of the figure in inches.
+    dpi : int
+        Resolution of the figure in dpi.
+
+    Returns
+    -------
+    fig : figure
+        Matplotlib figure.
+    ax : axes
+        Matplotlib axes.
     """
 
     # create the figure
@@ -152,6 +222,24 @@ def get_fig_clone(fig, ax):
     This function is used to split large plots in two parts:
         - A vector plot with the axes, labels, ticks, legend, etc.
         - A raster plot with the large payload (contour, scatter, etc.)
+
+    Parameters
+    ----------
+    fig : figure
+        Matplotlib figure to be considered.
+    ax : axes
+        Matplotlib axes to be considered.
+
+    Returns
+    -------
+    size : tuple
+        Size of the figure in inches.
+    xlim : tuple
+        Limit for the x-axis.
+    ylim : tuple
+        Limit for the y-axis.
+    clim : tuple
+        Limit for the color-axis.
     """
 
     # get the size of the axis of the vector figure
@@ -176,6 +264,17 @@ def set_fig_clone(size, xlim, ylim, clim):
     This function is used to split large plots in two parts:
         - A vector plot with the axes, labels, ticks, legend, etc.
         - A raster plot with the large payload (e.g., contour, scatter, or image).
+
+    Parameters
+    ----------
+    size : tuple
+        Size of the figure in inches.
+    xlim : tuple
+        Limit for the x-axis.
+    ylim : tuple
+        Limit for the y-axis.
+    clim : tuple
+        Limit for the color-axis.
     """
 
     plt.gca().set_position([0.0, 0.0, 1.0, 1.0])
@@ -191,7 +290,16 @@ def set_fig_clone(size, xlim, ylim, clim):
 
 def save_svg(fig, filename):
     """
-    Save a plot to a SVG file (for Inkscape).
+    Save a plot to an SVG file.
+
+    Parameters
+    ----------
+    fig : figure
+        Matplotlib figure to be saved.
+    filename : str
+        Path of the filename to be saved.
+    dpi : int
+        Resolution (in dpi) for the export.
     """
 
     # compact and fix the plot layout
@@ -203,9 +311,20 @@ def save_svg(fig, filename):
 
 def save_png(fig, filename, dpi=100):
     """
-    Save a plot to a PNG file (for Inkscape).
-    The resolution can be specified.
+    Save a plot to a PNG file.
+
+    Parameters
+    ----------
+    fig : figure
+        Matplotlib figure to be saved.
+    filename : str
+        Path of the filename to be saved.
+    dpi : int
+        Resolution (in dpi) for the export.
     """
+
+    # compact and fix the plot layout
+    fig.tight_layout()
 
     # save the plot for Inkscape
     fig.savefig(filename, dpi=dpi, transparent=True)

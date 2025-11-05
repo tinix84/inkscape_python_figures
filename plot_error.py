@@ -57,7 +57,7 @@ ax.set_ylabel("y-axis (unit)")
 ax.set_title("Plot Title")
 
 # set the grid
-utils_mpl.set_grid(ax)
+utils_mpl.set_grid(major=True, minor=False)
 
 # save the plot for Inkscape
 utils_mpl.save_svg(fig, "render/error.svg")

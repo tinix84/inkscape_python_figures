@@ -1,6 +1,6 @@
 """
 Collection of small utils to create figures with PyVista:
-    - Step nice default parameters.
+    - Setup nice default parameters.
     - Trim the output PNG files.
 """
 

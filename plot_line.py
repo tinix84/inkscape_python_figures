@@ -49,8 +49,8 @@ plt.plot(x, y_1, "-or", ms=3.0, lw=1.5, label="label 1")
 plt.plot(x, y_2, "-ob", ms=3.0, lw=1.5, label="label 2")
 
 # get the axes transformations
-plt.xscale("linear")
-plt.yscale("log")
+ax.set_xscale("linear")
+ax.set_yscale("log")
 
 
 # custom format for y-axis
@@ -77,7 +77,7 @@ ax.set_ylabel("y-axis (unit)")
 ax.set_title("Plot Title")
 
 # set the grid
-utils_mpl.set_grid(ax)
+utils_mpl.set_grid(major=True, minor=True)
 
 # save the plot for Inkscape
 utils_mpl.save_svg(fig, "render/line.svg")

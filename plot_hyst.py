@@ -39,8 +39,8 @@ yticks = np.linspace(0.0, 150.0, 6)
 (fig, ax) = utils_mpl.get_fig(size=(3.5, 3.0), dpi=200)
 
 # add the histograms
-plt.hist(x, color="r", label="x", alpha=0.5)
-plt.hist(y, color="g", label="y", alpha=0.5)
+ax.hist(x, color="r", label="x", alpha=0.5)
+ax.hist(y, color="g", label="y", alpha=0.5)
 
 # set the x-axis limit and format
 utils_mpl.set_x_axis(bnd=xticks, add_offset=0.1)
@@ -57,7 +57,7 @@ ax.set_ylabel("y-axis (unit)")
 ax.set_title("Plot Title")
 
 # set the grid
-utils_mpl.set_grid(ax)
+utils_mpl.set_grid(major=True, minor=False)
 
 # save the plot for Inkscape
 utils_mpl.save_svg(fig, "render/hyst.svg")
