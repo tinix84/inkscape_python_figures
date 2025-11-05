@@ -29,9 +29,9 @@ utils_mpl.set_global()
 os.makedirs("render", exist_ok=True)
 
 # define dummy data
-x = np.random.rand(10000)
-y = np.random.rand(10000)
-z = np.random.rand(10000)
+x = np.random.rand(100000)
+y = np.random.rand(100000)
+z = np.random.rand(100000)
 
 # define the colormap
 cmap = "viridis"
@@ -88,7 +88,7 @@ clim = scr.get_clim()
 (fig, ax) = utils_mpl.get_fig(size=(3.5, 3.0), dpi=200)
 
 # plot the data
-scr = plt.scatter(x, y, c=z, s=8.0, cmap=cmap)
+scr = ax.scatter(x, y, c=z, s=8.0, cmap=cmap)
 
 # clone the axes parameters
 utils_mpl.set_fig_clone(fig, ax, size, xlim, ylim)

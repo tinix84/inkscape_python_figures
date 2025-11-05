@@ -40,13 +40,13 @@ yticks = np.power(10.0, np.linspace(4, 7, 4))
 (fig, ax) = utils_mpl.get_fig(size=(3.5, 3.0), dpi=200)
 
 # add reference curves
-plt.plot([-1, +3], [1e6, 1e6], "-k", lw=1.0)
-plt.plot([-1, +3], [1e5, 1e5], "-k", lw=1.0)
-plt.axhspan(1e5, 1e6, facecolor="orange", alpha=0.2)
+ax.plot([-1, +3], [1e6, 1e6], "-k", lw=1.0)
+ax.plot([-1, +3], [1e5, 1e5], "-k", lw=1.0)
+ax.axhspan(1e5, 1e6, facecolor="orange", alpha=0.2)
 
 # add the data curves
-plt.plot(x, y_1, "-or", ms=3.0, lw=1.5, label="label 1")
-plt.plot(x, y_2, "-ob", ms=3.0, lw=1.5, label="label 2")
+ax.plot(x, y_1, "-or", ms=3.0, lw=1.5, label="label 1")
+ax.plot(x, y_2, "-ob", ms=3.0, lw=1.5, label="label 2")
 
 # get the axes transformations
 ax.set_xscale("linear")

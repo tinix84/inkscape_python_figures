@@ -1,7 +1,7 @@
 """
 Example for a Matplotlib plot with the following features:
-    - Histogram.
-    - Transparency.
+    - Logarithmic axis.
+    - Custom axis ticks.
 """
 
 __author__ = "Thomas Guillod"
@@ -11,6 +11,7 @@ __license__ = "Mozilla Public License Version 2.0"
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.ticker as tkr
 import utils_mpl
 
 # ###########################################################
@@ -24,12 +25,11 @@ utils_mpl.set_global()
 os.makedirs("render", exist_ok=True)
 
 # define dummy data
-x = np.random.rayleigh(size=500)
-y = np.random.normal(size=500)
+data = np.loadtxt("plot_data/impedance.txt")
 
 # get the axis ticks
-xticks = np.linspace(-2.0, +3.0, 6)
-yticks = np.linspace(0.0, 150.0, 6)
+xticks = np.power(10.0, np.linspace(3, 8, 6))
+yticks = np.power(10.0, np.linspace(0, 5, 6))
 
 # ###########################################################
 # Definition of the line plot
@@ -38,30 +38,35 @@ yticks = np.linspace(0.0, 150.0, 6)
 # create a figure with a determined size
 (fig, ax) = utils_mpl.get_fig(size=(3.5, 3.0), dpi=200)
 
-# add the histograms
-ax.hist(x, color="r", label="x", alpha=0.5)
-ax.hist(y, color="g", label="y", alpha=0.5)
+# add reference curves
+ax.axvspan(1e3, 4e5, facecolor="green", alpha=0.2)
+ax.axvspan(4e5, 1e8, facecolor="orange", alpha=0.2)
+ax.plot(data[:, 0], data[:, 1], "r", lw=1.5)
+
+# get the axes transformations
+ax.set_xscale("log")
+ax.set_yscale("log")
 
 # set the x-axis limit and format
-utils_mpl.set_x_axis(ax, bnd=xticks, add_offset=0.1)
-utils_mpl.set_format(ax.xaxis, ticks=xticks, fmt="${x:+.1f}$")
+utils_mpl.set_x_axis(ax, bnd=xticks, add_offset=0.0)
+fmt = tkr.LogFormatterMathtext()
+utils_mpl.set_format(ax.xaxis, ticks=xticks, fmt=fmt)
 
-# set the y-axis limit and format
-utils_mpl.set_y_axis(ax, bnd=yticks, add_offset=0.0)
-utils_mpl.set_format(ax.yaxis, ticks=yticks, fmt="${x:.0f}$")
+# # set the y-axis limit and format
+utils_mpl.set_y_axis(ax, bnd=yticks, add_fact=1.0)
+fmt = tkr.LogFormatterMathtext()
+utils_mpl.set_format(ax.yaxis, ticks=yticks, fmt=fmt)
 
 # set the legend and labels
-ax.set_axisbelow(True)
-ax.legend(loc="upper right")
-ax.set_xlabel("x-axis (unit)")
-ax.set_ylabel("y-axis (unit)")
-ax.set_title("Plot Title")
+ax.set_xlabel("Frequency (Hz)")
+ax.set_ylabel("Impedance (Ohm)")
+ax.set_title("Impedance")
 
 # set the grid
-utils_mpl.set_grid(fig, ax, major=True, minor=False)
+utils_mpl.set_grid(fig, ax, major=True, minor=True)
 
 # save the plot for Inkscape
-utils_mpl.save_svg(fig, "render/hyst.svg")
+utils_mpl.save_svg(fig, "render/meas_impedance.svg")
 
 # ###########################################################
 # Show the plots

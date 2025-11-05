@@ -40,8 +40,8 @@ yticks = np.linspace(2.0, 11.0, 5)
 (fig, ax) = utils_mpl.get_fig(size=(3.5, 3.0), dpi=200)
 
 # add the plot curves
-plt.fill_between(x, y - e, y + e, color="g", alpha=0.2)
-plt.errorbar(x, y, yerr=e, lw=1.5, marker="o", ms=3.0, capsize=3.0, ecolor="r", color="g")
+ax.fill_between(x, y - e, y + e, color="g", alpha=0.2)
+ax.errorbar(x, y, yerr=e, lw=1.5, marker="o", ms=3.0, capsize=3.0, ecolor="r", color="g")
 
 # set the x-axis limit and format
 utils_mpl.set_x_axis(ax, bnd=xticks, add_offset=0.1)
