@@ -44,11 +44,11 @@ plt.fill_between(x, y - e, y + e, color="g", alpha=0.2)
 plt.errorbar(x, y, yerr=e, lw=1.5, marker="o", ms=3.0, capsize=3.0, ecolor="r", color="g")
 
 # set the x-axis limit and format
-utils_mpl.set_x_axis(bnd=xticks, add_offset=0.1)
+utils_mpl.set_x_axis(ax, bnd=xticks, add_offset=0.1)
 utils_mpl.set_format(ax.xaxis, ticks=xticks, fmt="${x:.2f}$")
 
 # set the y-axis limit and format
-utils_mpl.set_y_axis(bnd=yticks, add_offset=1.0)
+utils_mpl.set_y_axis(ax, bnd=yticks, add_offset=1.0)
 utils_mpl.set_format(ax.yaxis, ticks=yticks, fmt="${x:.2f}$")
 
 # set the legend and labels
@@ -57,7 +57,7 @@ ax.set_ylabel("y-axis (unit)")
 ax.set_title("Plot Title")
 
 # set the grid
-utils_mpl.set_grid(major=True, minor=False)
+utils_mpl.set_grid(fig, ax, major=True, minor=False)
 
 # save the plot for Inkscape
 utils_mpl.save_svg(fig, "render/error.svg")

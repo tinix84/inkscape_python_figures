@@ -63,11 +63,11 @@ def custom_format(x, _):
 
 
 # set the x-axis limit and format
-utils_mpl.set_x_axis(bnd=xticks, add_offset=0.1)
+utils_mpl.set_x_axis(ax, bnd=xticks, add_offset=0.1)
 utils_mpl.set_format(ax.xaxis, ticks=xticks, fmt="${x:.2f}$")
 
 # set the y-axis limit and format
-utils_mpl.set_y_axis(bnd=yticks, add_fact=1.0)
+utils_mpl.set_y_axis(ax, bnd=yticks, add_fact=1.0)
 utils_mpl.set_format(ax.yaxis, ticks=yticks, fmt=custom_format)
 
 # set the legend and labels
@@ -77,7 +77,7 @@ ax.set_ylabel("y-axis (unit)")
 ax.set_title("Plot Title")
 
 # set the grid
-utils_mpl.set_grid(major=True, minor=True)
+utils_mpl.set_grid(fig, ax, major=True, minor=True)
 
 # save the plot for Inkscape
 utils_mpl.save_svg(fig, "render/line.svg")

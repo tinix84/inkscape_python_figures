@@ -29,9 +29,9 @@ utils_mpl.set_global()
 os.makedirs("render", exist_ok=True)
 
 # define dummy data
-x = np.random.rand(100000)
-y = np.random.rand(100000)
-z = np.random.rand(100000)
+x = np.random.rand(10000)
+y = np.random.rand(10000)
+z = np.random.rand(10000)
 
 # define the colormap
 cmap = "viridis"
@@ -47,18 +47,21 @@ yticks = np.linspace(0.0, 1.0, 5)
 
 # create a figure with a determined size
 (fig, ax) = utils_mpl.get_fig(size=(3.5, 3.0), dpi=200)
-plt.set_cmap(cmap)
+
+# dummy scatter plot
+scr = ax.scatter(np.nan, np.nan, 1.0, 1.0, cmap=cmap)
 
 # set the colorbar limit and format
-cb = utils_mpl.set_cbar(bnd=cticks, add_offset=0.1)
+cb = fig.colorbar(scr)
+utils_mpl.set_cbar(scr, bnd=cticks, add_offset=0.1)
 utils_mpl.set_format(cb.ax.yaxis, ticks=cticks, fmt="${x:.2f}$")
 
 # set the x-axis limit and format
-utils_mpl.set_x_axis(bnd=xticks, add_offset=0.1)
+utils_mpl.set_x_axis(ax, bnd=xticks, add_offset=0.1)
 utils_mpl.set_format(ax.xaxis, ticks=xticks, fmt="${x:.2f}$")
 
 # set the y-axis limit and format
-utils_mpl.set_y_axis(bnd=yticks, add_offset=0.1)
+utils_mpl.set_y_axis(ax, bnd=yticks, add_offset=0.1)
 utils_mpl.set_format(ax.yaxis, ticks=yticks, fmt="${x:.2f}$")
 
 # set global properties
@@ -68,7 +71,7 @@ ax.set_ylabel("y-axis (unit)")
 ax.set_title("Plot Title")
 
 # set the grid
-utils_mpl.set_grid(major=True, minor=False)
+utils_mpl.set_grid(fig, ax, major=True, minor=False)
 
 # save the plot for Inkscape
 utils_mpl.save_svg(fig, "render/cmap_vector.svg")
@@ -78,16 +81,18 @@ utils_mpl.save_svg(fig, "render/cmap_vector.svg")
 # ###########################################################
 
 # clone the axes parameters
-(size, xlim, ylim, clim) = utils_mpl.get_fig_clone(fig, ax)
+(size, xlim, ylim) = utils_mpl.get_fig_clone(fig, ax)
+clim = scr.get_clim()
 
 # create a figure for the raster data
 (fig, ax) = utils_mpl.get_fig(size=(3.5, 3.0), dpi=200)
-plt.set_cmap(cmap)
 
 # plot the data
-plt.scatter(x, y, c=z, s=8.0)
+scr = plt.scatter(x, y, c=z, s=8.0, cmap=cmap)
 
-utils_mpl.set_fig_clone(size, xlim, ylim, clim)
+# clone the axes parameters
+utils_mpl.set_fig_clone(fig, ax, size, xlim, ylim)
+scr.set_clim(clim)
 
 # save the plot for Inkscape
 utils_mpl.save_png(fig, "render/cmap_raster.png", dpi=500)

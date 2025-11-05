@@ -40,12 +40,16 @@ def set_global():
     plt.rcParams["legend.fontsize"] = 9.0
 
 
-def set_grid(major=True, minor=True):
+def set_grid(fig, ax, major=True, minor=True):
     """
     Set the grid for a plot.
 
     Parameters
     ----------
+    fig : figure
+        Matplotlib figure.
+    ax : axes
+        Matplotlib axes to be considered.
     major : bool
         Use the major grid.
     minor : bool
@@ -53,9 +57,10 @@ def set_grid(major=True, minor=True):
     """
 
     if major:
-        plt.grid(which="major", linewidth=0.75)
+        ax.grid(which="major", linewidth=0.75)
     if minor:
-        plt.grid(which="minor", linewidth=0.25)
+        ax.grid(which="minor", linewidth=0.25)
+    fig.tight_layout()
 
 
 def get_bnd(bnd=None, add_offset=0.0, add_fact=0.0):
@@ -89,12 +94,14 @@ def get_bnd(bnd=None, add_offset=0.0, add_fact=0.0):
     return v_min, v_max
 
 
-def set_cbar(bnd=None, add_offset=0.0, add_fact=0.0):
+def set_cbar(obj, bnd=None, add_offset=0.0, add_fact=0.0):
     """
     Create a colorbar and set the bounds (with tolerances).
 
     Parameters
     ----------
+    obj : map
+        Mappable where the color limit is set.
     bnd : array
         Array with the min and max values.
     add_offset : float
@@ -103,23 +110,19 @@ def set_cbar(bnd=None, add_offset=0.0, add_fact=0.0):
         Add multiplicative offset for the limits (for log scales).
     """
 
-    # create the colorbar
-    cb = plt.colorbar()
-
-    # set the bounds
     if bnd is not None:
         (v_min, v_max) = get_bnd(bnd=bnd, add_offset=add_offset, add_fact=add_fact)
-        plt.clim(v_min, v_max)
-
-    return cb
+        obj.set_clim(v_min, v_max)
 
 
-def set_x_axis(bnd=None, add_offset=0.0, add_fact=0.0):
+def set_x_axis(ax, bnd=None, add_offset=0.0, add_fact=0.0):
     """
     Set the bounds for the x-axis (with tolerances).
 
     Parameters
     ----------
+    ax : axes
+        Matplotlib axes to be considered.
     bnd : array
         Array with the min and max values.
     add_offset : float
@@ -130,15 +133,17 @@ def set_x_axis(bnd=None, add_offset=0.0, add_fact=0.0):
 
     if bnd is not None:
         (v_min, v_max) = get_bnd(bnd=bnd, add_offset=add_offset, add_fact=add_fact)
-        plt.xlim(v_min, v_max)
+        ax.set_xlim(v_min, v_max)
 
 
-def set_y_axis(bnd=None, add_offset=0.0, add_fact=0.0):
+def set_y_axis(ax, bnd=None, add_offset=0.0, add_fact=0.0):
     """
     Set the bounds for the y-axis (with tolerances).
 
     Parameters
     ----------
+    ax : axes
+        Matplotlib axes to be considered.
     bnd : array
         Array with the min and max values.
     add_offset : float
@@ -149,7 +154,7 @@ def set_y_axis(bnd=None, add_offset=0.0, add_fact=0.0):
 
     if bnd is not None:
         (v_min, v_max) = get_bnd(bnd=bnd, add_offset=add_offset, add_fact=add_fact)
-        plt.ylim(v_min, v_max)
+        ax.set_ylim(v_min, v_max)
 
 
 def set_format(axis, ticks=None, fmt=None):
@@ -208,9 +213,6 @@ def get_fig(size=(6, 4), dpi=100):
     fig = plt.figure(figsize=size, dpi=dpi)
     ax = fig.gca()
 
-    # dummy plot in order to get a colormap
-    plt.scatter(np.nan, np.nan)
-
     return fig, ax
 
 
@@ -238,8 +240,6 @@ def get_fig_clone(fig, ax):
         Limit for the x-axis.
     ylim : tuple
         Limit for the y-axis.
-    clim : tuple
-        Limit for the color-axis.
     """
 
     # get the size of the axis of the vector figure
@@ -250,12 +250,11 @@ def get_fig_clone(fig, ax):
     size = (width, height)
     xlim = ax.get_xlim()
     ylim = ax.get_ylim()
-    clim = plt.gci().get_clim()
 
-    return size, xlim, ylim, clim
+    return size, xlim, ylim
 
 
-def set_fig_clone(size, xlim, ylim, clim):
+def set_fig_clone(fig, ax, size, xlim, ylim):
     """
     Resize a figure to the specified dimensions.
     The axes are occupied the complete figure.
@@ -267,23 +266,25 @@ def set_fig_clone(size, xlim, ylim, clim):
 
     Parameters
     ----------
+    fig : figure
+        Matplotlib figure to be considered.
+    ax : axes
+        Matplotlib axes to be considered.
     size : tuple
         Size of the figure in inches.
     xlim : tuple
         Limit for the x-axis.
     ylim : tuple
         Limit for the y-axis.
-    clim : tuple
-        Limit for the color-axis.
     """
 
-    plt.gca().set_position([0.0, 0.0, 1.0, 1.0])
-    plt.gcf().set_size_inches(size)
+    # set the axes
+    fig.set_size_inches(size)
+    ax.set_position([0.0, 0.0, 1.0, 1.0])
 
     # set the extent
     plt.xlim(xlim)
     plt.ylim(ylim)
-    plt.clim(clim)
     plt.grid(False)
     plt.axis(False)
 
@@ -302,10 +303,6 @@ def save_svg(fig, filename):
         Resolution (in dpi) for the export.
     """
 
-    # compact and fix the plot layout
-    fig.tight_layout()
-
-    # save the plot for Inkscape
     fig.savefig(filename, transparent=True)
 
 
@@ -323,8 +320,4 @@ def save_png(fig, filename, dpi=100):
         Resolution (in dpi) for the export.
     """
 
-    # compact and fix the plot layout
-    fig.tight_layout()
-
-    # save the plot for Inkscape
     fig.savefig(filename, dpi=dpi, transparent=True)
