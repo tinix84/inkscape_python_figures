@@ -43,11 +43,11 @@ ax.hist(x, color="r", label="x", alpha=0.5)
 ax.hist(y, color="g", label="y", alpha=0.5)
 
 # set the x-axis limit and format
-utils_mpl.set_x_axis(ax, bnd=xticks, add_offset=0.1)
+utils_mpl.set_x_axis(ax, bnd=xticks, margin=0.05, log=False)
 utils_mpl.set_format(ax.xaxis, ticks=xticks, fmt="${x:+.1f}$")
 
 # set the y-axis limit and format
-utils_mpl.set_y_axis(ax, bnd=yticks, add_offset=0.0)
+utils_mpl.set_y_axis(ax, bnd=yticks, margin=0.0, log=False)
 utils_mpl.set_format(ax.yaxis, ticks=yticks, fmt="${x:.0f}$")
 
 # set the legend and labels

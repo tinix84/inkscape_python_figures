@@ -1,7 +1,5 @@
 """
-Example for a Matplotlib plot with the following features:
-    - Logarithmic axis.
-    - Custom axis ticks.
+Example for a Matplotlib plot with the impedance measurements.
 """
 
 __author__ = "Thomas Guillod"
@@ -25,7 +23,7 @@ utils_mpl.set_global()
 os.makedirs("render", exist_ok=True)
 
 # define dummy data
-data = np.loadtxt("plot_data/impedance.txt")
+data = np.loadtxt("plot_data/impedance.gz")
 
 # get the axis ticks
 xticks = np.power(10.0, np.linspace(3, 8, 6))
@@ -48,12 +46,12 @@ ax.set_xscale("log")
 ax.set_yscale("log")
 
 # set the x-axis limit and format
-utils_mpl.set_x_axis(ax, bnd=xticks, add_offset=0.0)
+utils_mpl.set_x_axis(ax, bnd=xticks, margin=0.00, log=True)
 fmt = tkr.LogFormatterMathtext()
 utils_mpl.set_format(ax.xaxis, ticks=xticks, fmt=fmt)
 
 # # set the y-axis limit and format
-utils_mpl.set_y_axis(ax, bnd=yticks, add_fact=1.0)
+utils_mpl.set_y_axis(ax, bnd=yticks, margin=0.05, log=True)
 fmt = tkr.LogFormatterMathtext()
 utils_mpl.set_format(ax.yaxis, ticks=yticks, fmt=fmt)
 

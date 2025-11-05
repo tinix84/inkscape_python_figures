@@ -63,21 +63,18 @@ def set_grid(fig, ax, major=True, minor=True):
     fig.tight_layout()
 
 
-def get_bnd(bnd=None, add_offset=0.0, add_fact=0.0):
+def get_bnd(bnd=None, margin=0.0, log=False):
     """
     Get bound limits with specified tolerances.
-        - bnd: vector containing the bounds
-        - add_offset: offset added to the bounds (useful for linear scales)
-        - add_fact: factor added to the bounds (useful for log scales)
 
     Parameters
     ----------
     bnd : array
         Array with the min and max values.
-    add_offset : float
-        Add additive offset for the limits (for linear scales).
-    add_fact : float
-        Add multiplicative offset for the limits (for log scales).
+    margin : float
+        Relative margin for the bounds.
+    log : float
+        Determine if the axis is linear or logarithmic.
 
     Returns
     -------
@@ -87,14 +84,24 @@ def get_bnd(bnd=None, add_offset=0.0, add_fact=0.0):
         Upper limit for the axis.
     """
 
-    # set the bounds
-    v_min = (np.min(bnd) - add_offset) / (1 + add_fact)
-    v_max = (np.max(bnd) + add_offset) * (1 + add_fact)
+    # scale the axis
+    if log:
+        bnd = np.log10(bnd)
+
+    # find the bounds
+    add_offset = (np.max(bnd) - np.min(bnd)) * margin
+    v_min = np.min(bnd) - add_offset
+    v_max = np.max(bnd) + add_offset
+
+    # unscale the axis
+    if log:
+        v_min =np.power(10.0, v_min)
+        v_max =np.power(10.0, v_max)
 
     return v_min, v_max
 
 
-def set_cbar(obj, bnd=None, add_offset=0.0, add_fact=0.0):
+def set_cbar(obj, bnd=None, margin=0.0, log=False):
     """
     Create a colorbar and set the bounds (with tolerances).
 
@@ -104,18 +111,18 @@ def set_cbar(obj, bnd=None, add_offset=0.0, add_fact=0.0):
         Mappable where the color limit is set.
     bnd : array
         Array with the min and max values.
-    add_offset : float
-        Add additive offset for the limits (for linear scales).
-    add_fact : float
-        Add multiplicative offset for the limits (for log scales).
+    margin : float
+        Relative margin for the bounds.
+    log : float
+        Determine if the axis is linear or logarithmic.
     """
 
     if bnd is not None:
-        (v_min, v_max) = get_bnd(bnd=bnd, add_offset=add_offset, add_fact=add_fact)
+        (v_min, v_max) = get_bnd(bnd=bnd, margin=margin, log=log)
         obj.set_clim(v_min, v_max)
 
 
-def set_x_axis(ax, bnd=None, add_offset=0.0, add_fact=0.0):
+def set_x_axis(ax, bnd=None, margin=0.0, log=False):
     """
     Set the bounds for the x-axis (with tolerances).
 
@@ -125,18 +132,18 @@ def set_x_axis(ax, bnd=None, add_offset=0.0, add_fact=0.0):
         Matplotlib axes to be considered.
     bnd : array
         Array with the min and max values.
-    add_offset : float
-        Add additive offset for the limits (for linear scales).
-    add_fact : float
-        Add multiplicative offset for the limits (for log scales).
+    margin : float
+        Relative margin for the bounds.
+    log : float
+        Determine if the axis is linear or logarithmic.
     """
 
     if bnd is not None:
-        (v_min, v_max) = get_bnd(bnd=bnd, add_offset=add_offset, add_fact=add_fact)
+        (v_min, v_max) = get_bnd(bnd=bnd, margin=margin, log=log)
         ax.set_xlim(v_min, v_max)
 
 
-def set_y_axis(ax, bnd=None, add_offset=0.0, add_fact=0.0):
+def set_y_axis(ax, bnd=None, margin=0.0, log=False):
     """
     Set the bounds for the y-axis (with tolerances).
 
@@ -146,14 +153,14 @@ def set_y_axis(ax, bnd=None, add_offset=0.0, add_fact=0.0):
         Matplotlib axes to be considered.
     bnd : array
         Array with the min and max values.
-    add_offset : float
-        Add additive offset for the limits (for linear scales).
-    add_fact : float
-        Add multiplicative offset for the limits (for log scales).
+    margin : float
+        Relative margin for the bounds.
+    log : float
+        Determine if the axis is linear or logarithmic.
     """
 
     if bnd is not None:
-        (v_min, v_max) = get_bnd(bnd=bnd, add_offset=add_offset, add_fact=add_fact)
+        (v_min, v_max) = get_bnd(bnd=bnd, margin=margin, log=log)
         ax.set_ylim(v_min, v_max)
 
 
