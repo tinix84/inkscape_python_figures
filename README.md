@@ -33,13 +33,16 @@ The following open-source tools are used:
   * [utils_pv.py](utils_pv.py) - Utils functions for PyVista plots.
 * Python Plots
   * [plot_line.py](plot_line.py) - Logarithmic axis and custom axis ticks.
-  * [plot_error.py](plot_error.py) - Error bars and error fill area.
-  * [plot_cmap.py](plot_cmap.py) - Scatter plot with a colormap.
+  * [plot_error.py](plot_error.py) - Plot with error bars and error fill area.
+  * [plot_hyst.py](plot_hyst.py) - Histogram plot with transparency.
+  * [plot_cmap.py](plot_cmap.py) - Large scatter plot with a colormap.
+  * [plot_meas_impedance.py](plot_meas_impedance.py) - Plot impedance measurements.
+  * [plot_meas_waveform.py](plot_meas_waveform.py) - Plot scope waveforms.
   * [plot_mesh.py](plot_mesh.py) - 3D/2D plots of EM simulations.
   * [plot_notebook.ipynb](plot_cmap.py) - Plot with Jupyter notebook.
 * Folders
-  * [fig_schemas](fig_schemas) - Examples of Inkscape schematics / diagrams.
-  * [fig_plots](fig_plots) - Examples of Inkscape plots (with Python).
+  * [fig_schemas](fig_schemas) - Examples of Inkscape figures (schematics / diagrams).
+  * [fig_plots](fig_plots) - Examples of Inkscape plots (with Python / Matplotlib).
   * [plot_data](plot_data) - Data for the example plots.
   * [img_data](img_data) - Images for the readme file.
 

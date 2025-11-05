@@ -1,5 +1,5 @@
 """
-Example for a Matplotlib plot with the waveform measurements.
+Example for a Matplotlib plot with the scope waveforms.
 """
 
 __author__ = "Thomas Guillod"
@@ -28,9 +28,9 @@ I_vec = data[:, 1]
 V_vec = data[:, 2]
 
 # downsampling
-t_vec = t_vec[::5]
-I_vec = I_vec[::5]
-V_vec = V_vec[::5]
+t_vec = t_vec[::50]
+I_vec = I_vec[::50]
+V_vec = V_vec[::50]
 
 # # get the axis ticks
 xticks = np.linspace(-15, +15, 7)

@@ -39,8 +39,8 @@ yticks = np.linspace(0.0, 150.0, 6)
 (fig, ax) = utils_mpl.get_fig(size=(3.5, 3.0), dpi=200)
 
 # add the histograms
-ax.hist(x, color="r", label="x", alpha=0.5)
-ax.hist(y, color="g", label="y", alpha=0.5)
+ax.hist(x, color="r", label="x-data", alpha=0.5)
+ax.hist(y, color="g", label="y-data", alpha=0.5)
 
 # set the x-axis limit and format
 utils_mpl.set_x_axis(ax, bnd=xticks, margin=0.05, log=False)
