@@ -4,6 +4,7 @@
 
 A **tutorial** for creating **publication-quality figures** with **open-source tools**:
 * Focus on **electrical engineering / power electronics**
+* Compatible with typical **IEEE paper format**
 * **Schematics / diagrams** with Inkscape
 * **Various plots** with Matplotlib
 * **Mesh / FEM plots** with PyVista
