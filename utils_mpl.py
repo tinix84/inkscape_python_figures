@@ -95,8 +95,8 @@ def get_bnd(bnd=None, margin=0.0, log=False):
 
     # unscale the axis
     if log:
-        v_min =np.power(10.0, v_min)
-        v_max =np.power(10.0, v_max)
+        v_min = np.power(10.0, v_min)
+        v_max = np.power(10.0, v_max)
 
     return v_min, v_max
 
@@ -306,8 +306,6 @@ def save_svg(fig, filename):
         Matplotlib figure to be saved.
     filename : str
         Path of the filename to be saved.
-    dpi : int
-        Resolution (in dpi) for the export.
     """
 
     fig.savefig(filename, transparent=True)
