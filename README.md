@@ -6,7 +6,7 @@ A **tutorial** for creating **publication-quality figures** with **open-source t
 * Focus on **electrical engineering / power electronics**
 * **Schematics / diagrams** with Inkscape
 * **Various plots** with Matplotlib
-* **Mesh/FEM plots** with PyVista
+* **Mesh / FEM plots** with PyVista
 * [**Slides of the tutorial**](slides.pdf)
 
 The following open-source tools are used:
@@ -19,14 +19,15 @@ The following open-source tools are used:
 
 ## Some Examples
 
+![Title](img_data/title.png)
 ![Schemas](img_data/schemas.png)
 ![Plots](img_data/plots.png)
 
 ## Repository Description
 
 * Main Files
-  * [slides.pdf](slides.pdf) - Slides (PDF) of the tutorial (CC BY-ND 4.0)
-  * [slides.odp](slides.odp) - Slides (ODP) of the tutorial (CC BY-ND 4.0)
+  * [slides.pdf](slides.pdf) - Slides (PDF) of the tutorial (CC BY 4.0)
+  * [slides.odp](slides.odp) - Slides (ODP) of the tutorial (CC BY 4.0)
   * [requirements.txt](requirements.txt) - List of the used Python packages.
   * [export_inkscape.sh](export_inkscape.sh) - Export PDF/PNG from Inkscape.
   * [utils_mpl.py](utils_mpl.py) - Utils functions for Matplotlib plots.
