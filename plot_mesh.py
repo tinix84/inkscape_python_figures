@@ -63,8 +63,9 @@ clim_field = (0.0, 2.0)
 pl = pv.Plotter(window_size=(1024, 768))
 
 # add the geometry
-pl.add_mesh(coil, color="orange")
-pl.add_mesh(core, color="gray")
+pl.add_mesh(coil, color="orange", show_edges=True)
+pl.add_mesh(core, color="gray", show_edges=True)
+pl.add_title("Select the camera angle")
 
 # plot and get the final camera angle
 cpos = pl.show(return_cpos=True)
@@ -136,7 +137,7 @@ pl.add_mesh(field, scalars="field", cmap=cmap_field, clim=clim_field)
 pl.add_mesh(coil, color="orange")
 
 # plot, save, and crop margin
-# pl.enable_2d_style()
+pl.enable_2d_style()
 pl.enable_parallel_projection()
 pl.show(screenshot="render/mesh_core_2D.png", cpos="xz")
 utils_pv.get_crop("render/mesh_core_2D.png", margin=25)
