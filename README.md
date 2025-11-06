@@ -37,7 +37,7 @@ The following open-source tools are used:
   * [plot_hyst.py](plot_hyst.py) - Histogram plot with transparency.
   * [plot_cmap.py](plot_cmap.py) - Large scatter plot with a colormap.
   * [plot_meas_impedance.py](plot_meas_impedance.py) - Plot impedance measurements.
-  * [plot_meas_waveform.py](plot_meas_waveform.py) - Plot scope waveforms.
+  * [plot_meas_waveform.py](plot_meas_waveform.py) - Plot oscilloscope waveforms.
   * [plot_mesh.py](plot_mesh.py) - 3D/2D plots of EM simulations.
   * [plot_notebook.ipynb](plot_cmap.py) - Plot with Jupyter notebook.
 * Folders

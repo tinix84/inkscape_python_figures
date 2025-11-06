@@ -1,5 +1,5 @@
 """
-Example for a Matplotlib plot with the scope waveforms.
+Example for a Matplotlib plot with the oscilloscope waveforms.
 """
 
 __author__ = "Thomas Guillod"

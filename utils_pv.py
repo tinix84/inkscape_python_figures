@@ -17,8 +17,12 @@ def set_global():
     Set the global PyVista options.
     """
 
+    pv.set_plot_theme("document")
     pv.global_theme.transparent_background = True
     pv.global_theme.show_scalar_bar = False
+    pv.global_theme.show_vertices = False
+    pv.global_theme.show_edges = False
+    pv.render_points_as_spheres = True
 
 
 def get_crop(filename, margin=0):
