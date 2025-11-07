@@ -47,6 +47,10 @@ potential = solution.threshold(scalars="potential")
 # extract the core field
 field = solution.threshold(scalars="field")
 
+# smooth the field patterns
+potential = potential.cell_data_to_point_data()
+field = field.cell_data_to_point_data()
+
 # define the colormap
 cmap_potential = "viridis"
 cmap_field = "magma"
