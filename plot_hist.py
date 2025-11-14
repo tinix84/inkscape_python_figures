@@ -61,7 +61,7 @@ ax.set_title("Plot Title")
 utils_mpl.set_grid(fig, ax, major=True, minor=False)
 
 # save the plot for Inkscape
-utils_mpl.save_svg(fig, "render/hyst.svg")
+utils_mpl.save_svg(fig, "render/hist.svg")
 
 # ###########################################################
 # Show the plots

@@ -36,7 +36,7 @@ The following open-source tools are used:
 * Python Plots
   * [plot_line.py](plot_line.py) - Logarithmic axis and custom axis ticks.
   * [plot_error.py](plot_error.py) - Plot with error bars and error fill area.
-  * [plot_hyst.py](plot_hyst.py) - Histogram plot with transparency.
+  * [plot_hist.py](plot_hist.py) - Histogram plot with transparency.
   * [plot_cmap.py](plot_cmap.py) - Large scatter plot with a colormap.
   * [plot_meas_impedance.py](plot_meas_impedance.py) - Plot impedance measurements.
   * [plot_meas_waveform.py](plot_meas_waveform.py) - Plot oscilloscope waveforms.
