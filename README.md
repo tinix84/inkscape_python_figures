@@ -50,10 +50,18 @@ The following open-source tools are used:
 
 ## Compatibility
 
-* Tested on Linux x86/64.
-* Tested with Python 3.12.3.
-* Tested with Inkscape 1.4.1.
-* Package list in `requirements.txt`.
+* Operating systems
+  * Tested on Linux x86/64.
+  * Tested on MS Windows x86/64.
+  * Tested on Apple MacOS ARM64.
+* Software versions
+  * Tested with Python 3.12 / 3.13
+  * Tested with Inkscape 1.4.1.
+* Python dependencies
+  * Numpy / Matplotlib
+  * PyVista / Pillow
+  * JupyterLab (optional)
+  * List in `requirements.txt`.
 
 ## Author
 
