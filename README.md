@@ -72,8 +72,6 @@ The following open-source tools are used:
 
 ## Copyright
 
-(c) 2022-2025 / Thomas Guillod / Dartmouth College
-
-This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at http://mozilla.org/MPL/2.0/.
+> (c) 2023-2025 - Thomas Guillod
+> 
+>  BSD 2-Clause "Simplified" License
